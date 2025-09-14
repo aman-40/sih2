@@ -1,0 +1,418 @@
+/* CollegeDirectory.css - Custom styles for College Directory page */
+
+.college-directory-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf6ff 0%, #f5faff 100%);
+  padding: 2rem 0;
+}
+.college-directory-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: none;
+  padding: 0 1.5rem;
+}
+.college-directory-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.college-directory-header-title {
+  color: #1976d2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.college-directory-header-main {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+}
+.college-directory-header-desc {
+  color: #444;
+  font-size: 1.1rem;
+}
+.college-directory-search-card {
+  background: #f5faff;
+  border-radius: 1rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,40,120,0.07);
+  margin-bottom: 2rem;
+}
+.college-directory-search-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.college-directory-search-input-wrap {
+  flex: 1;
+}
+.college-directory-search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #b3c2e0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+}
+.college-directory-search-input:focus {
+  border-color: #1976d2;
+}
+.college-directory-filter-btn {
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.college-directory-filter-btn:hover {
+  background: #1565c0;
+}
+.college-directory-filter-icon {
+  font-weight: 700;
+  color: #b3c2e0;
+}
+.college-directory-filters-wrap {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eaf6ff;
+}
+.college-directory-filters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.college-directory-filter-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.college-directory-filter-select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #b3c2e0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+}
+.college-directory-filter-select:focus {
+  border-color: #1976d2;
+}
+.college-directory-results-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.college-directory-results-count {
+  color: #444;
+  font-size: 1rem;
+}
+.college-directory-results-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.college-directory-results-sort-label {
+  font-size: 1rem;
+  color: #444;
+}
+.college-directory-results-sort-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #b3c2e0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+}
+.college-directory-results-sort-select:focus {
+  border-color: #1976d2;
+}
+.college-directory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.college-card {
+  background: linear-gradient(135deg, #f5faff 60%, #e3f2fd 100%);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,40,120,0.07);
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.college-card:hover {
+  box-shadow: 0 4px 16px rgba(0,40,120,0.13);
+}
+.college-card-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.college-card-img {
+  width: 220px;
+  height: 180px;
+  background: #f5faff;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.college-card-img-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #b3c2e0;
+}
+.college-card-info {
+  flex: 1;
+}
+.college-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.college-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 0.3rem;
+}
+.college-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.college-card-location-icon {
+  font-weight: 700;
+  color: #b3c2e0;
+}
+.college-card-type {
+  background: #fbc02d;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+  margin-top: 0.3rem;
+  display: inline-block;
+}
+.college-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.college-card-rating-icon {
+  color: #fbc02d;
+  font-size: 1.1rem;
+}
+.college-card-rating-value {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 600;
+}
+.college-card-stats-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.college-card-stats-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #444;
+  font-size: 1rem;
+}
+.college-card-stats-icon {
+  color: #b3c2e0;
+  font-weight: 700;
+}
+.college-card-stats-text {
+  color: #444;
+}
+.college-card-streams {
+  margin-bottom: 1rem;
+}
+.college-card-streams-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 0.3rem;
+}
+.college-card-streams-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.college-card-streams-item {
+  background: #f5faff;
+  color: #1976d2;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+}
+.college-card-courses {
+  margin-bottom: 1rem;
+}
+.college-card-courses-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 0.3rem;
+}
+.college-card-courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.college-card-courses-item {
+  background: #eaf6ff;
+  color: #1976d2;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+}
+.college-card-courses-more {
+  color: #b3c2e0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.college-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.college-card-cutoff {
+  font-size: 1rem;
+  color: #444;
+}
+.college-card-cutoff-label {
+  color: #444;
+}
+.college-card-cutoff-value {
+  font-weight: 700;
+  color: #1976d2;
+}
+.college-card-actions {
+  display: flex;
+  gap: 0.7rem;
+}
+.college-card-details-btn {
+  background: none;
+  color: #1976d2;
+  font-weight: 600;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.college-card-details-btn:hover {
+  color: #1565c0;
+}
+.college-card-apply-btn {
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.college-card-apply-btn:hover {
+  background: #1565c0;
+}
+.college-directory-empty {
+  text-align: center;
+  padding: 3rem 0;
+}
+.college-directory-empty-label {
+  color: #b3c2e0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.college-directory-empty-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 0.3rem;
+}
+.college-directory-empty-desc {
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.college-directory-clear-btn {
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.college-directory-clear-btn:hover {
+  background: #1565c0;
+}
+.college-directory-loadmore-wrap {
+  text-align: center;
+  margin-top: 2rem;
+}
+.college-directory-loadmore-btn {
+  background: #fbc02d;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.college-directory-loadmore-btn:hover {
+  background: #f9a825;
+}
+@media (max-width: 900px) {
+  .college-directory-filters-grid {
+    grid-template-columns: 1fr;
+  }
+  .college-card-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .college-directory-container {
+    padding: 0 0.5rem;
+  }
+}

@@ -1,0 +1,422 @@
+/* AdminPanel.css - Modern, consistent theme for Admin Panel page */
+
+.adminpanel-bg {
+  min-height: 100vh;
+  background: #eaf6ff;
+  padding: 32px 0;
+}
+.adminpanel-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.adminpanel-header {
+  margin-bottom: 32px;
+}
+.adminpanel-header-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 8px;
+}
+.adminpanel-header-desc {
+  color: #555;
+  font-size: 1rem;
+}
+
+.adminpanel-main-row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+.adminpanel-sidebar {
+  width: 220px;
+}
+.adminpanel-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.adminpanel-sidebar-btn {
+  background: #f0f7ff;
+  color: #2196f3;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+.adminpanel-sidebar-btn:hover {
+  background: #d2eafd;
+}
+.adminpanel-sidebar-selected {
+  background: #2196f3;
+  color: #fff;
+}
+.adminpanel-sidebar-btn-label {
+  font-weight: bold;
+}
+.adminpanel-main-content {
+  flex: 1;
+}
+
+.adminpanel-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.adminpanel-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.adminpanel-stats-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  text-align: center;
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.adminpanel-stats-label {
+  color: #666;
+  font-size: 1rem;
+}
+.adminpanel-stats-value {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #2196f3;
+}
+.adminpanel-stats-change {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.adminpanel-stats-change-positive {
+  color: #43a047;
+}
+.adminpanel-stats-change-negative {
+  color: #e53935;
+}
+
+.adminpanel-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.adminpanel-charts-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  padding: 24px;
+}
+.adminpanel-charts-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 8px;
+}
+.adminpanel-charts-placeholder {
+  height: 180px;
+  background: #eaf6ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b3d1f7;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.adminpanel-activity-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  padding: 24px;
+}
+.adminpanel-activity-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 12px;
+}
+.adminpanel-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.adminpanel-activity-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #eaf6ff;
+  padding: 8px 0;
+}
+.adminpanel-activity-dot {
+  width: 10px;
+  height: 10px;
+  background: #2196f3;
+  border-radius: 50%;
+}
+.adminpanel-activity-action {
+  color: #222;
+  font-size: 1rem;
+}
+.adminpanel-activity-time {
+  color: #888;
+  font-size: 0.95rem;
+  margin-left: auto;
+}
+
+.adminpanel-colleges-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.adminpanel-colleges-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+.adminpanel-colleges-add-btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  transition: background 0.2s;
+}
+.adminpanel-colleges-add-btn:hover {
+  background: #1769aa;
+}
+.adminpanel-colleges-add-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.adminpanel-colleges-filters-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  padding: 18px;
+  margin-bottom: 18px;
+}
+.adminpanel-colleges-filters-row {
+  display: flex;
+  gap: 18px;
+}
+.adminpanel-colleges-search-input {
+  flex: 2;
+  min-width: 180px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #b3d1f7;
+  font-size: 1rem;
+  background: #f0f7ff;
+  color: #222;
+}
+.adminpanel-colleges-filter-select {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #b3d1f7;
+  font-size: 1rem;
+  background: #f0f7ff;
+  color: #222;
+}
+
+.adminpanel-colleges-table-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  padding: 18px;
+}
+.adminpanel-colleges-table-wrap {
+  overflow-x: auto;
+}
+.adminpanel-colleges-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.adminpanel-colleges-table-head th {
+  background: #eaf6ff;
+  color: #2196f3;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 8px;
+  text-align: left;
+}
+.adminpanel-colleges-table-body td {
+  padding: 10px 8px;
+  font-size: 1rem;
+  color: #222;
+}
+.adminpanel-colleges-status {
+  padding: 4px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 12px;
+  background: #eaf6ff;
+  color: #2196f3;
+}
+.adminpanel-colleges-status-active {
+  background: #eaffea;
+  color: #43a047;
+}
+.adminpanel-colleges-status-pending {
+  background: #fff8e1;
+  color: #fb8c00;
+}
+.adminpanel-colleges-actions {
+  display: flex;
+  gap: 8px;
+}
+.adminpanel-colleges-action-btn {
+  background: none;
+  color: #2196f3;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.adminpanel-colleges-action-btn:hover {
+  background: #eaf6ff;
+}
+.adminpanel-colleges-action-view {
+  color: #2196f3;
+}
+.adminpanel-colleges-action-edit {
+  color: #8e24aa;
+}
+.adminpanel-colleges-action-delete {
+  color: #e53935;
+}
+
+.adminpanel-modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.adminpanel-modal-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.18);
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+}
+.adminpanel-modal-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 18px;
+}
+.adminpanel-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.adminpanel-modal-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.adminpanel-modal-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+}
+.adminpanel-modal-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #b3d1f7;
+  font-size: 1rem;
+  background: #f0f7ff;
+  color: #222;
+}
+.adminpanel-modal-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #b3d1f7;
+  font-size: 1rem;
+  background: #f0f7ff;
+  color: #222;
+}
+.adminpanel-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.adminpanel-modal-cancel-btn {
+  background: none;
+  color: #888;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.adminpanel-modal-cancel-btn:hover {
+  background: #eaf6ff;
+}
+.adminpanel-modal-submit-btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.adminpanel-modal-submit-btn:hover {
+  background: #1769aa;
+}
+
+@media (max-width: 900px) {
+  .adminpanel-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .adminpanel-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .adminpanel-container {
+    padding: 0 8px;
+  }
+  .adminpanel-main-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .adminpanel-sidebar {
+    width: 100%;
+  }
+  .adminpanel-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

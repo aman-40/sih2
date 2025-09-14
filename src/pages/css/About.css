@@ -1,0 +1,187 @@
+/* About Page Custom CSS - Theme matches Home page */
+
+.about-container {
+  min-height: 100vh;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.about-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+.about-description {
+  font-size: 1.25rem;
+  color: #374151;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-mission {
+  background: #9BD7F1;
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.about-mission-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+.about-mission-description {
+  font-size: 1.125rem;
+  color: #374151;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-problem-solution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+.about-problem, .about-solution {
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  flex: 1 1 320px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  min-width: 280px;
+}
+.about-section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  color: #374151;
+  font-size: 1rem;
+}
+.about-list-item {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.about-stakeholders {
+  margin-bottom: 3rem;
+}
+.about-stakeholders-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.about-card {
+  background: #9BD7F1;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.about-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+.about-card-role {
+  color: #2563eb;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.about-card-description {
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.about-values {
+  margin-bottom: 3rem;
+}
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.about-impact {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 3rem;
+}
+.about-impact-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.about-impact-description {
+  color: #e0e7ff;
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.about-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.about-impact-card {
+  text-align: center;
+}
+.about-impact-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.about-impact-label {
+  color: #e0e7ff;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .about-stakeholders-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-impact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .about-stakeholders-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-values-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-impact-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-inner {
+    padding: 1rem;
+  }
+}
