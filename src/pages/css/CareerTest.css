@@ -1,3 +1,49 @@
+.career-test-results-ai-conclusion-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px rgba(25,118,210,0.10);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.career-test-results-ai-icon {
+  width: 48px;
+  height: 48px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%232563eb" viewBox="0 0 24 24" width="48" height="48" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="%231976d2"/><path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+.career-test-results-ai-text {
+  font-size: 1.12rem;
+  color: #2563eb;
+  font-weight: 600;
+  line-height: 1.7;
+  word-break: break-word;
+}
+.career-test-results-ai-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #1976d2;
+  letter-spacing: 0.02em;
+}
+.career-test-results-ai-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+.career-test-results-ai-list-item {
+  margin-bottom: 0.5rem;
+  font-size: 1.07rem;
+  color: #1a237e;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
 /* Responsive improvements for Career Test page */
 @media (max-width: 900px) {
   .professional-career-test-card {

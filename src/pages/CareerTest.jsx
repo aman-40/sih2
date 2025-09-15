@@ -125,63 +125,76 @@ const CareerTest = () => {
 
   const calculateResults = () => {
     setLoading(true)
-    
-    // Simulate AI calculation
-    setTimeout(() => {
-      const scores = { science: 0, commerce: 0, arts: 0 }
-      
-      Object.values(answers).forEach(answer => {
-        if (answer && answer.weight) {
-          scores.science += answer.weight.science || 0
-          scores.commerce += answer.weight.commerce || 0
-          scores.arts += answer.weight.arts || 0
-        }
-      })
-
-      const totalScore = scores.science + scores.commerce + scores.arts
-      const percentages = {
-        science: Math.round((scores.science / totalScore) * 100),
-        commerce: Math.round((scores.commerce / totalScore) * 100),
-        arts: Math.round((scores.arts / totalScore) * 100)
+    // Calculate scores locally
+    const scores = { science: 0, commerce: 0, arts: 0 }
+    Object.values(answers).forEach(answer => {
+      if (answer && answer.weight) {
+        scores.science += answer.weight.science || 0
+        scores.commerce += answer.weight.commerce || 0
+        scores.arts += answer.weight.arts || 0
       }
-
-      const recommendedStream = Object.keys(percentages).reduce((a, b) => 
-        percentages[a] > percentages[b] ? a : b
-      )
-
-      const streamDetails = {
-        science: {
-          name: 'Science Stream',
-          description: 'Perfect for students interested in mathematics, physics, chemistry, biology, and technology.',
-          careers: ['Engineer', 'Doctor', 'Scientist', 'Researcher', 'Data Analyst'],
-          subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology/Computer Science'],
-          colleges: ['IITs', 'NITs', 'Medical Colleges', 'Engineering Institutes']
-        },
-        commerce: {
-          name: 'Commerce Stream',
-          description: 'Ideal for students interested in business, economics, finance, and management.',
-          careers: ['CA', 'Business Analyst', 'Banker', 'Entrepreneur', 'Financial Advisor'],
-          subjects: ['Accountancy', 'Business Studies', 'Economics', 'Mathematics/Informatics'],
-          colleges: ['Delhi University', 'SRCC', 'Christ University', 'Symbiosis']
-        },
-        arts: {
-          name: 'Arts/Humanities Stream',
-          description: 'Great for students interested in languages, social sciences, and creative fields.',
-          careers: ['Teacher', 'Journalist', 'Social Worker', 'Artist', 'Civil Services'],
-          subjects: ['History', 'Political Science', 'Geography', 'Literature', 'Psychology'],
-          colleges: ['JNU', 'DU Arts', 'Jamia Millia', 'TISS']
-        }
+    })
+    const totalScore = scores.science + scores.commerce + scores.arts
+    const percentages = {
+      science: Math.round((scores.science / totalScore) * 100),
+      commerce: Math.round((scores.commerce / totalScore) * 100),
+      arts: Math.round((scores.arts / totalScore) * 100)
+    }
+    const recommendedStream = Object.keys(percentages).reduce((a, b) => 
+      percentages[a] > percentages[b] ? a : b
+    )
+    const streamDetails = {
+      science: {
+        name: 'Science Stream',
+        description: 'Perfect for students interested in mathematics, physics, chemistry, biology, and technology.',
+        careers: ['Engineer', 'Doctor', 'Scientist', 'Researcher', 'Data Analyst'],
+        subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology/Computer Science'],
+        colleges: ['IITs', 'NITs', 'Medical Colleges', 'Engineering Institutes']
+      },
+      commerce: {
+        name: 'Commerce Stream',
+        description: 'Ideal for students interested in business, economics, finance, and management.',
+        careers: ['CA', 'Business Analyst', 'Banker', 'Entrepreneur', 'Financial Advisor'],
+        subjects: ['Accountancy', 'Business Studies', 'Economics', 'Mathematics/Informatics'],
+        colleges: ['Delhi University', 'SRCC', 'Christ University', 'Symbiosis']
+      },
+      arts: {
+        name: 'Arts/Humanities Stream',
+        description: 'Great for students interested in languages, social sciences, and creative fields.',
+        careers: ['Teacher', 'Journalist', 'Social Worker', 'Artist', 'Civil Services'],
+        subjects: ['History', 'Political Science', 'Geography', 'Literature', 'Psychology'],
+        colleges: ['JNU', 'DU Arts', 'Jamia Millia', 'TISS']
       }
-
-      setResults({
-        recommendedStream,
-        percentages,
-        details: streamDetails[recommendedStream],
-        allStreams: streamDetails
+    }
+    // Fetch AI-generated conclusion from backend
+    fetch('http://localhost:5000/api/ollama-conclusion', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setResults({
+          recommendedStream,
+          percentages,
+          details: streamDetails[recommendedStream],
+          allStreams: streamDetails,
+          aiConclusion: data.conclusion || ''
+        })
+        setTestCompleted(true)
+        setLoading(false)
       })
-      setTestCompleted(true)
-      setLoading(false)
-    }, 2000)
+      .catch(() => {
+        setResults({
+          recommendedStream,
+          percentages,
+          details: streamDetails[recommendedStream],
+          allStreams: streamDetails,
+          aiConclusion: 'Unable to fetch AI conclusion at this time.'
+        })
+        setTestCompleted(true)
+        setLoading(false)
+      })
   }
 
   const retakeTest = () => {
@@ -204,6 +217,18 @@ const CareerTest = () => {
   }
 
   if (testCompleted && results) {
+
+    // Helper to format AI conclusion as point-wise list
+    const formatAiConclusion = (text) => {
+      if (!text) return ['No AI conclusion available.'];
+      // Split by line or numbered/bulleted points
+      const points = text
+        .split(/\n|\r|\d+\. |• |\- /)
+        .map(p => p.trim())
+        .filter(p => p.length > 0);
+      return points;
+    };
+
     return (
       <div className="career-test-results-bg">
         <div className="career-test-results-container">
@@ -212,6 +237,19 @@ const CareerTest = () => {
             <span className="career-test-results-check">✔</span>
             <h1 className="career-test-results-title">Career Test Complete!</h1>
             <p className="career-test-results-desc">Here are your personalized recommendations</p>
+          </div>
+
+          {/* AI Conclusion - Now at Top */}
+          <div className="career-test-results-ai-conclusion-card">
+            <div className="career-test-results-ai-icon" />
+            <div className="career-test-results-ai-text">
+              <h2 className="career-test-results-ai-title">AI Career Guidance</h2>
+              <ul className="career-test-results-ai-list">
+                {formatAiConclusion(results.aiConclusion).map((point, idx) => (
+                  <li key={idx} className="career-test-results-ai-list-item">{point}</li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Main Recommendation */}
@@ -246,6 +284,7 @@ const CareerTest = () => {
               </div>
             </div>
           </div>
+
 
           {/* Stream Comparison */}
           <div className="career-test-results-card">
