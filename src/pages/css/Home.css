@@ -1,3 +1,62 @@
+/* Responsive improvements for Home page */
+@media (max-width: 1200px) {
+  .home-hero-split-inner,
+  .features-inner,
+  .stats-inner,
+  .benefits-inner {
+    max-width: 98vw;
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .home-hero-split-inner {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  .home-hero-split-left,
+  .home-hero-split-right {
+    padding: 2rem 1rem;
+    min-width: 0;
+  }
+  .features-grid,
+  .stats-grid-enhanced {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .vertical-benefits-cta {
+    gap: 1.2rem;
+  }
+  .footer-inner {
+    max-width: 98vw;
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .home-hero-split-title,
+  .features-title,
+  .benefits-title,
+  .refined-cta-title-no-card {
+    font-size: 1.3rem;
+  }
+  .home-hero-split-inner,
+  .features-inner,
+  .stats-inner,
+  .benefits-inner {
+    padding: 0 0.5rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+  }
+  .footer-social {
+    gap: 0.7rem;
+  }
+}
 .home-footer {
   width: 100%;
   background: #f5faff;

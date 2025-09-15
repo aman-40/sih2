@@ -1,3 +1,25 @@
+/* Responsive improvements for College Directory page */
+@media (max-width: 900px) {
+  .college-directory-container {
+    padding: 0 0.5rem;
+  }
+  .college-directory-search-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .college-directory-search-card {
+    padding: 0.7rem 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .college-directory-header-title,
+  .college-directory-header-main {
+    font-size: 1.1rem;
+  }
+  .college-directory-header-desc {
+    font-size: 0.95rem;
+  }
+}
 /* CollegeDirectory.css - Custom styles for College Directory page */
 
 .college-directory-bg {

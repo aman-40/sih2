@@ -1,3 +1,36 @@
+/* Responsive improvements for Navbar */
+@media (max-width: 900px) {
+  .navbar-container {
+    grid-template-columns: 1fr;
+    padding: 0 8px;
+    height: auto;
+  }
+  .navbar-links {
+    flex-direction: column;
+    gap: 12px;
+    margin-right: 0;
+    align-items: flex-start;
+  }
+  .navbar-auth {
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-logo {
+    font-size: 1.1rem;
+    margin-right: 0;
+  }
+  .navbar-link {
+    font-size: 0.95rem;
+    padding: 6px 0;
+  }
+  .navbar-auth-btn {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+}
 /* Navbar.css - Modern navigation bar styles */
 
  .navbar {

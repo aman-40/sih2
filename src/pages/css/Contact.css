@@ -1,3 +1,29 @@
+/* Responsive improvements for Contact page */
+@media (max-width: 900px) {
+  .contact-main-grid.contact-theme-grid {
+    grid-template-columns: 1fr;
+    border-radius: 8px;
+  }
+  .contact-info-panel {
+    min-height: 220px;
+    padding: 24px 12px;
+  }
+  .contact-form-panel {
+    padding: 24px 12px;
+  }
+}
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 1.3rem;
+  }
+  .contact-desc {
+    font-size: 1rem;
+  }
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 12px 4px;
+  }
+}
 /* Modern split contact page theme */
 .contact-bg {
   background: #f7f7f7;

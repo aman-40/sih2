@@ -1,3 +1,26 @@
+/* Responsive improvements for Features page */
+@media (max-width: 900px) {
+  .features-inner {
+    padding: 0.5rem;
+  }
+  .features-main-row {
+    flex-direction: column !important;
+    gap: 1.2rem;
+  }
+  .features-main-content {
+    min-width: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .features-title {
+    font-size: 1.3rem;
+  }
+  .features-description {
+    font-size: 1rem;
+  }
+}
 .features-main-row-left {
   flex-direction: row;
 }
