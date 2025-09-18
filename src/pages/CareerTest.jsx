@@ -273,26 +273,6 @@ const CareerTest = () => {
               <CareerTree aiTree={results.aiConclusion} />
             </div>
           </div>
-<<<<<<< HEAD
-          <div style={{ marginTop: 32 }}>
-            {/* Pass parsed AI conclusion tree to Sankey */}
-            <CareerSankey aiConclusion={
-              (() => {
-                // Try to parse the AI conclusion as JSON, fallback to empty array
-                if (results && results.aiConclusion) {
-                  try {
-                    if (typeof results.aiConclusion === 'string') {
-                      return JSON.parse(results.aiConclusion);
-                    }
-                    return results.aiConclusion;
-                  } catch {
-                    return [];
-                  }
-                }
-                return [];
-              })()
-            } />
-=======
 
           {/* Career Path Flowchart */}
           {results.flowchart && (
@@ -387,7 +367,6 @@ const CareerTest = () => {
                 <span className="font-bold text-gray-400">→</span>
               </button>
             </div>
->>>>>>> 1dcf8e5aefd92c76f653755b6bc710ecd9c04640
           </div>
         </div>
       </div>
