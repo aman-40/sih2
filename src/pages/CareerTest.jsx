@@ -179,7 +179,8 @@ const CareerTest = () => {
           percentages,
           details: streamDetails[recommendedStream],
           allStreams: streamDetails,
-          aiConclusion: data.conclusion || ''
+          aiConclusion: data.conclusion || '',
+          flowchart: data.flowchart || null
         })
         setTestCompleted(true)
         setLoading(false)
@@ -190,7 +191,8 @@ const CareerTest = () => {
           percentages,
           details: streamDetails[recommendedStream],
           allStreams: streamDetails,
-          aiConclusion: 'Unable to fetch AI conclusion at this time.'
+          aiConclusion: 'Unable to fetch AI conclusion at this time.',
+          flowchart: null
         })
         setTestCompleted(true)
         setLoading(false)
@@ -229,6 +231,40 @@ const CareerTest = () => {
       return points;
     };
 
+    // Flowchart Component
+    const FlowchartNode = ({ node, level = 0 }) => {
+      const [isExpanded, setIsExpanded] = useState(true);
+      
+      return (
+        <div className={`flowchart-node flowchart-level-${level}`}>
+          <div 
+            className="flowchart-node-content"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <div className="flowchart-node-header">
+              <span className="flowchart-node-title">{node.name}</span>
+              {node.children && node.children.length > 0 && (
+                <span className={`flowchart-expand-icon ${isExpanded ? 'expanded' : ''}`}>
+                  ▼
+                </span>
+              )}
+            </div>
+            {node.value && (
+              <div className="flowchart-node-value">{node.value}</div>
+            )}
+          </div>
+          
+          {node.children && node.children.length > 0 && isExpanded && (
+            <div className="flowchart-children">
+              {node.children.map((child, index) => (
+                <FlowchartNode key={index} node={child} level={level + 1} />
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    };
+
     return (
       <div className="career-test-results-bg">
         <div className="career-test-results-container">
@@ -251,6 +287,21 @@ const CareerTest = () => {
               </ul>
             </div>
           </div>
+
+          {/* Career Path Flowchart */}
+          {results.flowchart && (
+            <div className="career-test-results-card">
+              <h2 className="career-test-results-flowchart-title">
+                📊 Your Career Journey Roadmap
+              </h2>
+              <p className="career-test-results-flowchart-desc">
+                Here's a visual guide to help you navigate your career path based on your test results
+              </p>
+              <div className="career-test-flowchart-container">
+                <FlowchartNode node={results.flowchart} />
+              </div>
+            </div>
+          )}
 
           {/* Main Recommendation */}
           <div className="career-test-results-card">

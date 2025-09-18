@@ -44,6 +44,143 @@
   line-height: 1.6;
   letter-spacing: 0.01em;
 }
+
+/* Flowchart Styles */
+.career-test-results-flowchart-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.career-test-results-flowchart-desc {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.career-test-flowchart-container {
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 0.8rem;
+  border: 1px solid #e0e0e0;
+}
+
+.flowchart-node {
+  margin: 0.5rem 0;
+}
+
+.flowchart-node-content {
+  background: white;
+  border: 2px solid #e3f2fd;
+  border-radius: 0.8rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.flowchart-node-content:hover {
+  border-color: #2196f3;
+  box-shadow: 0 4px 16px rgba(33,150,243,0.2);
+  transform: translateY(-2px);
+}
+
+.flowchart-node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flowchart-node-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1565c0;
+}
+
+.flowchart-node-value {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #666;
+  font-style: italic;
+}
+
+.flowchart-expand-icon {
+  color: #2196f3;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.flowchart-expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.flowchart-children {
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e3f2fd;
+  margin-top: 0.5rem;
+}
+
+/* Level-specific styling */
+.flowchart-level-0 .flowchart-node-content {
+  background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+  color: white;
+  border-color: #1976d2;
+}
+
+.flowchart-level-0 .flowchart-node-title {
+  color: white;
+  font-size: 1.25rem;
+}
+
+.flowchart-level-0 .flowchart-node-value {
+  color: #e3f2fd;
+}
+
+.flowchart-level-0 .flowchart-expand-icon {
+  color: #e3f2fd;
+}
+
+.flowchart-level-1 .flowchart-node-content {
+  background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%);
+  color: white;
+  border-color: #43a047;
+}
+
+.flowchart-level-1 .flowchart-node-title {
+  color: white;
+}
+
+.flowchart-level-1 .flowchart-node-value {
+  color: #c8e6c9;
+}
+
+.flowchart-level-1 .flowchart-expand-icon {
+  color: #c8e6c9;
+}
+
+.flowchart-level-2 .flowchart-node-content {
+  background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%);
+  color: white;
+  border-color: #ff9800;
+}
+
+.flowchart-level-2 .flowchart-node-title {
+  color: white;
+}
+
+.flowchart-level-2 .flowchart-node-value {
+  color: #fff3e0;
+}
+
+.flowchart-level-2 .flowchart-expand-icon {
+  color: #fff3e0;
+}
 /* Responsive improvements for Career Test page */
 @media (max-width: 900px) {
   .professional-career-test-card {
