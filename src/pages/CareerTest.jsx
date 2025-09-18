@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 // Removed all icon imports
 import './css/CareerTest.css'
 
+import CareerTree from '../components/CareerTree'
+import CareerSankey from '../components/CareerSankey'
+
 const CareerTest = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
@@ -218,118 +221,40 @@ const CareerTest = () => {
 
   if (testCompleted && results) {
 
-    // Helper to format AI conclusion as point-wise list
-    const formatAiConclusion = (text) => {
-      if (!text) return ['No AI conclusion available.'];
-      // Split by line or numbered/bulleted points
-      const points = text
-        .split(/\n|\r|\d+\. |• |\- /)
-        .map(p => p.trim())
-        .filter(p => p.length > 0);
-      return points;
-    };
 
     return (
       <div className="career-test-results-bg">
         <div className="career-test-results-container">
-          {/* Results Header */}
           <div className="career-test-results-header">
             <span className="career-test-results-check">✔</span>
             <h1 className="career-test-results-title">Career Test Complete!</h1>
-            <p className="career-test-results-desc">Here are your personalized recommendations</p>
+            <p className="career-test-results-desc">Your personalized AI career path visualization</p>
           </div>
-
-          {/* AI Conclusion - Now at Top */}
           <div className="career-test-results-ai-conclusion-card">
             <div className="career-test-results-ai-icon" />
             <div className="career-test-results-ai-text">
-              <h2 className="career-test-results-ai-title">AI Career Guidance</h2>
-              <ul className="career-test-results-ai-list">
-                {formatAiConclusion(results.aiConclusion).map((point, idx) => (
-                  <li key={idx} className="career-test-results-ai-list-item">{point}</li>
-                ))}
-              </ul>
+              <h2 className="career-test-results-ai-title">AI Career Guidance Tree</h2>
+              <CareerTree aiTree={results.aiConclusion} />
             </div>
           </div>
-
-          {/* Main Recommendation */}
-          <div className="career-test-results-card">
-            <div className="career-test-results-main">
-              <h2 className="career-test-results-main-title">Recommended Stream: {results.details.name}</h2>
-              <p className="career-test-results-main-desc">{results.details.description}</p>
-            </div>
-
-            <div className="career-test-results-grid">
-              <div>
-                <h3 className="career-test-results-list-title">Career Options</h3>
-                <ul className="career-test-results-list">
-                  {results.details.careers.map((career, index) => (
-                    <li key={index} className="career-test-results-list-item">
-                      <span className="career-test-results-list-dot">•</span>
-                      <span className="career-test-results-list-text">{career}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="career-test-results-list-title">Subject Options</h3>
-                <ul className="career-test-results-list">
-                  {results.details.subjects.map((subject, index) => (
-                    <li key={index} className="career-test-results-list-item">
-                      <span className="career-test-results-list-dot">•</span>
-                      <span className="career-test-results-list-text">{subject}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-
-          {/* Stream Comparison */}
-          <div className="career-test-results-card">
-            <h3 className="career-test-results-list-title">Stream Compatibility Scores</h3>
-            <div className="career-test-results-score-list">
-              {Object.entries(results.percentages).map(([stream, percentage]) => (
-                <div key={stream} className="career-test-results-score-row">
-                  <div className={`career-test-results-score-dot ${stream === results.recommendedStream ? 'career-test-dot-recommended' : 'career-test-dot-other'}`}></div>
-                  <span className="career-test-results-score-label">{results.allStreams[stream].name}</span>
-                  <div className="career-test-results-score-bar-bg">
-                    <div className={`career-test-results-score-bar ${stream === results.recommendedStream ? 'career-test-bar-recommended' : 'career-test-bar-other'}`}
-                      style={{ width: `${percentage}%` }}></div>
-                  </div>
-                  <span className="career-test-results-score-percent">{percentage}%</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Next Steps */}
-          <div className="career-test-results-card">
-            <h3 className="career-test-results-list-title">Next Steps</h3>
-            <div className="career-test-results-next-grid">
-              <button
-                onClick={() => navigate('/colleges')}
-                className="career-test-btn-primary"
-              >
-                <span>Explore Colleges</span>
-                <span className="font-bold text-gray-400">→</span>
-              </button>
-              <button
-                onClick={() => navigate('/timeline')}
-                className="career-test-btn-secondary"
-              >
-                <span>View Timeline</span>
-                <span className="font-bold text-gray-400">→</span>
-              </button>
-              <button
-                onClick={retakeTest}
-                className="career-test-btn-retake"
-              >
-                <span>Retake Test</span>
-                <span className="font-bold text-gray-400">→</span>
-              </button>
-            </div>
+          <div style={{ marginTop: 32 }}>
+            {/* Pass parsed AI conclusion tree to Sankey */}
+            <CareerSankey aiConclusion={
+              (() => {
+                // Try to parse the AI conclusion as JSON, fallback to empty array
+                if (results && results.aiConclusion) {
+                  try {
+                    if (typeof results.aiConclusion === 'string') {
+                      return JSON.parse(results.aiConclusion);
+                    }
+                    return results.aiConclusion;
+                  } catch {
+                    return [];
+                  }
+                }
+                return [];
+              })()
+            } />
           </div>
         </div>
       </div>

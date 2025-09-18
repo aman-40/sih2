@@ -1,0 +1,54 @@
+/* Career Path Tree Visualization Styles */
+.career-tree-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.career-tree-list > .career-tree-node {
+  margin-left: 0;
+}
+.career-tree-node {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.career-tree-node:before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.7em;
+  width: 1rem;
+  height: 0;
+  border-top: 2px solid #1976d2;
+}
+.career-tree-list > .career-tree-node:before {
+  display: none;
+}
+.career-tree-label {
+  background: rgba(25, 118, 210, 0.07);
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  font-family: 'Roboto Mono', monospace;
+  transition: background 0.2s;
+}
+.career-tree-node:hover > .career-tree-label {
+  background: #e3eafc;
+}
+/* Draw vertical lines for children */
+.career-tree-list .career-tree-list {
+  margin-left: 1.2rem;
+  border-left: 2px solid #1976d2;
+  padding-left: 0.7rem;
+}
+@media (max-width: 600px) {
+  .career-tree-label {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .career-tree-list .career-tree-list {
+    margin-left: 0.5rem;
+    padding-left: 0.3rem;
+  }
+}

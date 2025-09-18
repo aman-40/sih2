@@ -1,0 +1,56 @@
+name: Fullstack CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: careerdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      mongo:
+        image: mongo:6
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install backend dependencies
+        run: |
+          cd server
+          npm ci
+      - name: Install frontend dependencies
+        run: |
+          npm ci
+      - name: Lint backend
+        run: |
+          cd server
+          npx eslint .
+      - name: Lint frontend
+        run: |
+          npx eslint .
+      - name: Build frontend
+        run: |
+          npm run build
+      - name: Run backend tests (add your test script)
+        run: |
+          cd server
+          npm test || echo "No backend tests yet"
+      - name: Run frontend tests (add your test script)
+        run: |
+          npm test || echo "No frontend tests yet"

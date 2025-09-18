@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 // Removed all icon imports
-import './css/Dashboard.css'
+import './css/DashboardPro.css'
 
 const Dashboard = () => {
   const { user } = useAuth()
@@ -84,61 +84,57 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="dashboard-page-bg">
-      <div className="dashboard-container">
+    <div className="dashboard-bg-glassy">
+      <div className="dashboard-container-pro">
         {/* Welcome Section */}
-        <div className="dashboard-welcome-section">
-          <h1 className="dashboard-welcome-title">Welcome back, {user?.name || 'Student'}!</h1>
-          <p className="dashboard-welcome-desc">Ready to continue your career journey? Here's what's happening with your profile.</p>
+        <div className="dashboard-welcome-pro">
+          <h1 className="dashboard-welcome-title-pro">Welcome back, {user?.name || 'Student'}!</h1>
+          <p className="dashboard-welcome-desc-pro">Ready to continue your career journey? Here's what's happening with your profile.</p>
         </div>
 
         {/* Stats Grid */}
-  <div className="dashboard-stats-grid">
+        <div className="dashboard-stats-pro">
           {stats.map((stat, index) => (
-            <div key={index} className="stat-card">
-              <div className="flex items-center">
-                <div>
-                  <div className="stat-number">{stat.value}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
-              </div>
+            <div key={index} className="dashboard-stat-card-pro">
+              <div className="dashboard-stat-number-pro">{stat.value}</div>
+              <div className="dashboard-stat-label-pro">{stat.label}</div>
             </div>
           ))}
         </div>
 
-  <div className="dashboard-main-grid">
+        <div className="dashboard-main-pro">
           {/* Quick Actions */}
-          <div className="dashboard-actions-section">
-            <h2 className="dashboard-actions-title">Quick Actions</h2>
-            <div className="dashboard-actions-grid">
+          <div className="dashboard-actions-pro">
+            <h2 className="dashboard-actions-title-pro">Quick Actions</h2>
+            <div className="dashboard-actions-grid-pro">
               {quickActions.map((action, index) => (
-                <Link key={index} to={action.link} className="dashboard-action-card">
-                  <h3 className="dashboard-action-title">{action.title}</h3>
-                  <p className="dashboard-action-desc">{action.description}</p>
-                  <div className="dashboard-action-link">Get Started</div>
+                <Link key={index} to={action.link} className="dashboard-action-card-pro">
+                  <h3 className="dashboard-action-title-pro">{action.title}</h3>
+                  <p className="dashboard-action-desc-pro">{action.description}</p>
+                  <div className="dashboard-action-link-pro">Get Started</div>
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Sidebar */}
-          <div className="dashboard-sidebar-section">
+          <div className="dashboard-sidebar-pro">
             {/* Upcoming Deadlines */}
-            <div className="dashboard-sidebar-card">
-              <div className="dashboard-sidebar-header">
-                <h3 className="dashboard-sidebar-title">Upcoming Deadlines</h3>
-                <Link to="/timeline" className="dashboard-sidebar-link">View All</Link>
+            <div className="dashboard-sidebar-card-pro">
+              <div className="dashboard-sidebar-header-pro">
+                <h3 className="dashboard-sidebar-title-pro">Upcoming Deadlines</h3>
+                <Link to="/timeline" className="dashboard-sidebar-link-pro">View All</Link>
               </div>
-              <div className="dashboard-deadline-list">
+              <div className="dashboard-deadline-list-pro">
                 {upcomingDeadlines.map((deadline, index) => (
-                  <div key={index} className="dashboard-deadline-row">
-                    <div className={`dashboard-deadline-dot ${deadline.type === 'exam' ? 'dashboard-dot-exam' : 'dashboard-dot-scholarship'}`}></div>
+                  <div key={index} className="dashboard-deadline-row-pro">
+                    <div className={`dashboard-deadline-dot-pro ${deadline.type === 'exam' ? 'dashboard-dot-exam-pro' : 'dashboard-dot-scholarship-pro'}`}></div>
                     <div>
-                      <div className="dashboard-deadline-title">{deadline.title}</div>
-                      <div className="dashboard-deadline-date">{deadline.date}</div>
+                      <div className="dashboard-deadline-title-pro">{deadline.title}</div>
+                      <div className="dashboard-deadline-date-pro">{deadline.date}</div>
                     </div>
                     {deadline.urgent && (
-                      <span className="dashboard-deadline-urgent">Urgent</span>
+                      <span className="dashboard-deadline-urgent-pro">Urgent</span>
                     )}
                   </div>
                 ))}
@@ -146,70 +142,70 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Activity */}
-            <div className="dashboard-sidebar-card">
-              <div className="dashboard-sidebar-header">
-                <h3 className="dashboard-sidebar-title">Recent Activity</h3>
-                <Link to="/dashboard" className="dashboard-sidebar-link">View All</Link>
+            <div className="dashboard-sidebar-card-pro">
+              <div className="dashboard-sidebar-header-pro">
+                <h3 className="dashboard-sidebar-title-pro">Recent Activity</h3>
+                <Link to="/dashboard" className="dashboard-sidebar-link-pro">View All</Link>
               </div>
-              <div className="dashboard-activity-list">
+              <div className="dashboard-activity-list-pro">
                 {recentActivity.map((activity, index) => (
-                  <div key={index} className="dashboard-activity-row">
-                    <div className="dashboard-activity-action">{activity.action}</div>
-                    <div className="dashboard-activity-time">{activity.time}</div>
+                  <div key={index} className="dashboard-activity-row-pro">
+                    <div className="dashboard-activity-action-pro">{activity.action}</div>
+                    <div className="dashboard-activity-time-pro">{activity.time}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Profile Completion */}
-            <div className="dashboard-sidebar-card">
-              <h3 className="dashboard-sidebar-title">Profile Completion</h3>
-              <div className="dashboard-profile-list">
-                <div className="dashboard-profile-row">
-                  <span className="dashboard-profile-label">Basic Info</span>
-                  <span className="dashboard-profile-status dashboard-status-complete">✓ Complete</span>
+            <div className="dashboard-sidebar-card-pro">
+              <h3 className="dashboard-sidebar-title-pro">Profile Completion</h3>
+              <div className="dashboard-profile-list-pro">
+                <div className="dashboard-profile-row-pro">
+                  <span className="dashboard-profile-label-pro">Basic Info</span>
+                  <span className="dashboard-profile-status-pro dashboard-status-complete-pro">✓ Complete</span>
                 </div>
-                <div className="dashboard-profile-row">
-                  <span className="dashboard-profile-label">Career Test</span>
-                  <span className="dashboard-profile-status dashboard-status-pending">Pending</span>
+                <div className="dashboard-profile-row-pro">
+                  <span className="dashboard-profile-label-pro">Career Test</span>
+                  <span className="dashboard-profile-status-pro dashboard-status-pending-pro">Pending</span>
                 </div>
-                <div className="dashboard-profile-row">
-                  <span className="dashboard-profile-label">Preferences</span>
-                  <span className="dashboard-profile-status dashboard-status-notstarted">Not Started</span>
+                <div className="dashboard-profile-row-pro">
+                  <span className="dashboard-profile-label-pro">Preferences</span>
+                  <span className="dashboard-profile-status-pro dashboard-status-notstarted-pro">Not Started</span>
                 </div>
-                <div className="dashboard-profile-progress">
-                  <div className="dashboard-profile-bar" style={{ width: '33%' }}></div>
+                <div className="dashboard-profile-progress-pro">
+                  <div className="dashboard-profile-bar-pro" style={{ width: '33%' }}></div>
                 </div>
-                <p className="dashboard-profile-percent">33% Complete</p>
+                <p className="dashboard-profile-percent-pro">33% Complete</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Recommendations */}
-        <div className="dashboard-recommend-section">
-          <h2 className="dashboard-recommend-title">Recommended for You</h2>
-          <div className="dashboard-recommend-grid">
-            <div className="dashboard-recommend-card">
-              <h3 className="dashboard-recommend-card-title">Top Scholarships</h3>
-              <p className="dashboard-recommend-card-desc">
+        <div className="dashboard-recommend-pro">
+          <h2 className="dashboard-recommend-title-pro">Recommended for You</h2>
+          <div className="dashboard-recommend-grid-pro">
+            <div className="dashboard-recommend-card-pro">
+              <h3 className="dashboard-recommend-card-title-pro">Top Scholarships</h3>
+              <p className="dashboard-recommend-card-desc-pro">
                 Based on your profile, here are scholarships you might be eligible for.
               </p>
-              <Link to="/resources" className="dashboard-recommend-link">View Scholarships →</Link>
+              <Link to="/resources" className="dashboard-recommend-link-pro">View Scholarships →</Link>
             </div>
-            <div className="dashboard-recommend-card">
-              <h3 className="dashboard-recommend-card-title">Career Insights</h3>
-              <p className="dashboard-recommend-card-desc">
+            <div className="dashboard-recommend-card-pro">
+              <h3 className="dashboard-recommend-card-title-pro">Career Insights</h3>
+              <p className="dashboard-recommend-card-desc-pro">
                 Discover trending career paths and job opportunities in your field.
               </p>
-              <Link to="/career-test" className="dashboard-recommend-link">Take Test →</Link>
+              <Link to="/career-test" className="dashboard-recommend-link-pro">Take Test →</Link>
             </div>
-            <div className="dashboard-recommend-card">
-              <h3 className="dashboard-recommend-card-title">Find Mentors</h3>
-              <p className="dashboard-recommend-card-desc">
+            <div className="dashboard-recommend-card-pro">
+              <h3 className="dashboard-recommend-card-title-pro">Find Mentors</h3>
+              <p className="dashboard-recommend-card-desc-pro">
                 Connect with career counselors and industry experts for guidance.
               </p>
-              <Link to="/contact" className="dashboard-recommend-link">Get Help →</Link>
+              <Link to="/contact" className="dashboard-recommend-link-pro">Get Help →</Link>
             </div>
           </div>
         </div>
