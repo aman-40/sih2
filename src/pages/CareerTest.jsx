@@ -182,7 +182,8 @@ const CareerTest = () => {
           percentages,
           details: streamDetails[recommendedStream],
           allStreams: streamDetails,
-          aiConclusion: data.conclusion || ''
+          aiConclusion: data.conclusion || '',
+          flowchart: data.flowchart || null
         })
         setTestCompleted(true)
         setLoading(false)
@@ -193,7 +194,8 @@ const CareerTest = () => {
           percentages,
           details: streamDetails[recommendedStream],
           allStreams: streamDetails,
-          aiConclusion: 'Unable to fetch AI conclusion at this time.'
+          aiConclusion: 'Unable to fetch AI conclusion at this time.',
+          flowchart: null
         })
         setTestCompleted(true)
         setLoading(false)
@@ -222,6 +224,40 @@ const CareerTest = () => {
   if (testCompleted && results) {
 
 
+    // Flowchart Component
+    const FlowchartNode = ({ node, level = 0 }) => {
+      const [isExpanded, setIsExpanded] = useState(true);
+      
+      return (
+        <div className={`flowchart-node flowchart-level-${level}`}>
+          <div 
+            className="flowchart-node-content"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <div className="flowchart-node-header">
+              <span className="flowchart-node-title">{node.name}</span>
+              {node.children && node.children.length > 0 && (
+                <span className={`flowchart-expand-icon ${isExpanded ? 'expanded' : ''}`}>
+                  ▼
+                </span>
+              )}
+            </div>
+            {node.value && (
+              <div className="flowchart-node-value">{node.value}</div>
+            )}
+          </div>
+          
+          {node.children && node.children.length > 0 && isExpanded && (
+            <div className="flowchart-children">
+              {node.children.map((child, index) => (
+                <FlowchartNode key={index} node={child} level={level + 1} />
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    };
+
     return (
       <div className="career-test-results-bg">
         <div className="career-test-results-container">
@@ -237,6 +273,7 @@ const CareerTest = () => {
               <CareerTree aiTree={results.aiConclusion} />
             </div>
           </div>
+<<<<<<< HEAD
           <div style={{ marginTop: 32 }}>
             {/* Pass parsed AI conclusion tree to Sankey */}
             <CareerSankey aiConclusion={
@@ -255,6 +292,102 @@ const CareerTest = () => {
                 return [];
               })()
             } />
+=======
+
+          {/* Career Path Flowchart */}
+          {results.flowchart && (
+            <div className="career-test-results-card">
+              <h2 className="career-test-results-flowchart-title">
+                📊 Your Career Journey Roadmap
+              </h2>
+              <p className="career-test-results-flowchart-desc">
+                Here's a visual guide to help you navigate your career path based on your test results
+              </p>
+              <div className="career-test-flowchart-container">
+                <FlowchartNode node={results.flowchart} />
+              </div>
+            </div>
+          )}
+
+          {/* Main Recommendation */}
+          <div className="career-test-results-card">
+            <div className="career-test-results-main">
+              <h2 className="career-test-results-main-title">Recommended Stream: {results.details.name}</h2>
+              <p className="career-test-results-main-desc">{results.details.description}</p>
+            </div>
+
+            <div className="career-test-results-grid">
+              <div>
+                <h3 className="career-test-results-list-title">Career Options</h3>
+                <ul className="career-test-results-list">
+                  {results.details.careers.map((career, index) => (
+                    <li key={index} className="career-test-results-list-item">
+                      <span className="career-test-results-list-dot">•</span>
+                      <span className="career-test-results-list-text">{career}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="career-test-results-list-title">Subject Options</h3>
+                <ul className="career-test-results-list">
+                  {results.details.subjects.map((subject, index) => (
+                    <li key={index} className="career-test-results-list-item">
+                      <span className="career-test-results-list-dot">•</span>
+                      <span className="career-test-results-list-text">{subject}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          {/* Stream Comparison */}
+          <div className="career-test-results-card">
+            <h3 className="career-test-results-list-title">Stream Compatibility Scores</h3>
+            <div className="career-test-results-score-list">
+              {Object.entries(results.percentages).map(([stream, percentage]) => (
+                <div key={stream} className="career-test-results-score-row">
+                  <div className={`career-test-results-score-dot ${stream === results.recommendedStream ? 'career-test-dot-recommended' : 'career-test-dot-other'}`}></div>
+                  <span className="career-test-results-score-label">{results.allStreams[stream].name}</span>
+                  <div className="career-test-results-score-bar-bg">
+                    <div className={`career-test-results-score-bar ${stream === results.recommendedStream ? 'career-test-bar-recommended' : 'career-test-bar-other'}`}
+                      style={{ width: `${percentage}%` }}></div>
+                  </div>
+                  <span className="career-test-results-score-percent">{percentage}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Next Steps */}
+          <div className="career-test-results-card">
+            <h3 className="career-test-results-list-title">Next Steps</h3>
+            <div className="career-test-results-next-grid">
+              <button
+                onClick={() => navigate('/colleges')}
+                className="career-test-btn-primary"
+              >
+                <span>Explore Colleges</span>
+                <span className="font-bold text-gray-400">→</span>
+              </button>
+              <button
+                onClick={() => navigate('/timeline')}
+                className="career-test-btn-secondary"
+              >
+                <span>View Timeline</span>
+                <span className="font-bold text-gray-400">→</span>
+              </button>
+              <button
+                onClick={retakeTest}
+                className="career-test-btn-retake"
+              >
+                <span>Retake Test</span>
+                <span className="font-bold text-gray-400">→</span>
+              </button>
+            </div>
+>>>>>>> 1dcf8e5aefd92c76f653755b6bc710ecd9c04640
           </div>
         </div>
       </div>
