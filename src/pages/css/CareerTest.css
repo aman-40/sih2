@@ -992,3 +992,52 @@
     justify-content: center;
   }
 }
+
+/* Keypoints Styling */
+.career-test-keypoints {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.career-test-keypoint {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.career-test-keypoint:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-left-color: #764ba2;
+}
+
+.career-test-keypoint-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.career-test-keypoint-content {
+  flex: 1;
+}
+
+.career-test-keypoint-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 8px 0;
+}
+
+.career-test-keypoint-text {
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+}

@@ -5,6 +5,9 @@ import './css/CareerTest.css'
 
 import CareerTree from '../components/CareerTree'
 import CareerSankey from '../components/CareerSankey'
+import CareerProgressionFlowchart from '../components/CareerProgressionFlowchart'
+import '../components/css/CareerSankey.css'
+import '../components/css/CareerProgressionFlowchart.css'
 
 const CareerTest = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -224,39 +227,6 @@ const CareerTest = () => {
   if (testCompleted && results) {
 
 
-    // Flowchart Component
-    const FlowchartNode = ({ node, level = 0 }) => {
-      const [isExpanded, setIsExpanded] = useState(true);
-      
-      return (
-        <div className={`flowchart-node flowchart-level-${level}`}>
-          <div 
-            className="flowchart-node-content"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            <div className="flowchart-node-header">
-              <span className="flowchart-node-title">{node.name}</span>
-              {node.children && node.children.length > 0 && (
-                <span className={`flowchart-expand-icon ${isExpanded ? 'expanded' : ''}`}>
-                  ▼
-                </span>
-              )}
-            </div>
-            {node.value && (
-              <div className="flowchart-node-value">{node.value}</div>
-            )}
-          </div>
-          
-          {node.children && node.children.length > 0 && isExpanded && (
-            <div className="flowchart-children">
-              {node.children.map((child, index) => (
-                <FlowchartNode key={index} node={child} level={level + 1} />
-              ))}
-            </div>
-          )}
-        </div>
-      );
-    };
 
     return (
       <div className="career-test-results-bg">
@@ -269,25 +239,48 @@ const CareerTest = () => {
           <div className="career-test-results-ai-conclusion-card">
             <div className="career-test-results-ai-icon" />
             <div className="career-test-results-ai-text">
-              <h2 className="career-test-results-ai-title">AI Career Guidance Tree</h2>
-              <CareerTree aiTree={results.aiConclusion} />
+              <h2 className="career-test-results-ai-title">🎯 Your Career Path Journey</h2>
+              <CareerSankey treeData={results.flowchart} />
             </div>
           </div>
 
-          {/* Career Path Flowchart */}
-          {results.flowchart && (
-            <div className="career-test-results-card">
-              <h2 className="career-test-results-flowchart-title">
-                📊 Your Career Journey Roadmap
-              </h2>
-              <p className="career-test-results-flowchart-desc">
-                Here's a visual guide to help you navigate your career path based on your test results
-              </p>
-              <div className="career-test-flowchart-container">
-                <FlowchartNode node={results.flowchart} />
-              </div>
+          {/* AI Key Points */}
+          <div className="career-test-results-card">
+            <h2 className="career-test-results-ai-title">🤖 AI Career Insights</h2>
+            <div className="career-test-keypoints">
+              {results.aiConclusion.split('\n').filter(line => line.trim()).map((point, index) => (
+                <div key={index} className="career-test-keypoint">
+                  <div className="career-test-keypoint-icon">
+                    {point.includes('Strengths') ? '💪' : 
+                     point.includes('Steps') ? '📋' : 
+                     point.includes('Outlook') ? '🔮' : '✨'}
+                  </div>
+                  <div className="career-test-keypoint-content">
+                    <h4 className="career-test-keypoint-title">
+                      {point.includes(':') ? point.split(':')[0] : `Key Point ${index + 1}`}
+                    </h4>
+                    <p className="career-test-keypoint-text">
+                      {point.includes(':') ? point.split(':').slice(1).join(':').trim() : point}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          )}
+          </div>
+
+          {/* Career Progression Flowchart */}
+          <div className="career-test-results-card">
+            <h2 className="career-test-results-flowchart-title">
+              📊 Your Career Progression Path
+            </h2>
+            <p className="career-test-results-flowchart-desc">
+              Visual roadmap showing your career journey from entry level to executive positions
+            </p>
+            <CareerProgressionFlowchart 
+              stream={results.recommendedStream} 
+              analysis={results.analysis || { percentages: results.percentages }}
+            />
+          </div>
 
           {/* Main Recommendation */}
           <div className="career-test-results-card">

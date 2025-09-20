@@ -1,0 +1,336 @@
+.career-progression-container {
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow-x: auto;
+}
+
+.career-progression-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.career-progression-header {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.career-progression-header h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.career-progression-header p {
+  color: #b0b0b0;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.career-progression-flowchart {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  min-width: 800px;
+}
+
+.career-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.level-title {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.level-nodes {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.career-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.path-title {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.path-nodes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.career-node {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.career-node:hover {
+  transform: translateY(-4px);
+}
+
+.career-node-content {
+  background: linear-gradient(135deg, #2d3748, #4a5568);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #667eea, #ff6b6b) 1;
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.career-node-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(255, 107, 107, 0.1));
+  pointer-events: none;
+}
+
+.career-node-title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.career-node-subtitle {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.career-node-experience {
+  color: #ffd93d;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(255, 217, 61, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.career-connection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0;
+  position: relative;
+}
+
+.connection-line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, #667eea, #ff6b6b);
+  position: relative;
+}
+
+.connection-line::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #ff6b6b;
+}
+
+.connection-label {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #ff6b6b);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Level-specific styling */
+.career-level-entry .career-node-content {
+  border-image: linear-gradient(135deg, #48bb78, #38a169) 1;
+  background: linear-gradient(135deg, #2f855a, #38a169);
+}
+
+.career-level-entry .career-node-content::before {
+  background: linear-gradient(135deg, rgba(72, 187, 120, 0.2), rgba(56, 161, 105, 0.2));
+}
+
+.career-level-level1 .career-node-content {
+  border-image: linear-gradient(135deg, #ed8936, #dd6b20) 1;
+  background: linear-gradient(135deg, #c05621, #dd6b20);
+}
+
+.career-level-level1 .career-node-content::before {
+  background: linear-gradient(135deg, rgba(237, 137, 54, 0.2), rgba(221, 107, 32, 0.2));
+}
+
+.career-level-level2 .career-node-content {
+  border-image: linear-gradient(135deg, #9f7aea, #805ad5) 1;
+  background: linear-gradient(135deg, #6b46c1, #805ad5);
+}
+
+.career-level-level2 .career-node-content::before {
+  background: linear-gradient(135deg, rgba(159, 122, 234, 0.2), rgba(128, 90, 213, 0.2));
+}
+
+.career-level-level3 .career-node-content {
+  border-image: linear-gradient(135deg, #38b2ac, #319795) 1;
+  background: linear-gradient(135deg, #2c7a7b, #319795);
+}
+
+.career-level-level3 .career-node-content::before {
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.2), rgba(49, 151, 149, 0.2));
+}
+
+.career-level-level4 .career-node-content {
+  border-image: linear-gradient(135deg, #e53e3e, #c53030) 1;
+  background: linear-gradient(135deg, #9b2c2c, #c53030);
+}
+
+.career-level-level4 .career-node-content::before {
+  background: linear-gradient(135deg, rgba(229, 62, 62, 0.2), rgba(197, 48, 48, 0.2));
+}
+
+.career-level-level5 .career-node-content {
+  border-image: linear-gradient(135deg, #d69e2e, #b7791f) 1;
+  background: linear-gradient(135deg, #975a16, #b7791f);
+  box-shadow: 0 8px 24px rgba(214, 158, 46, 0.4);
+}
+
+.career-level-level5 .career-node-content::before {
+  background: linear-gradient(135deg, rgba(214, 158, 46, 0.2), rgba(183, 121, 31, 0.2));
+}
+
+.career-level-level5 .career-node-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .career-progression-container {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .career-progression-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .level-nodes {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .path-nodes {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .career-node-content {
+    min-width: 160px;
+    padding: 12px 16px;
+  }
+  
+  .career-node-title {
+    font-size: 0.9rem;
+  }
+  
+  .career-node-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .career-node-experience {
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for nodes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.career-node {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.career-node:nth-child(1) { animation-delay: 0.1s; }
+.career-node:nth-child(2) { animation-delay: 0.2s; }
+.career-node:nth-child(3) { animation-delay: 0.3s; }
+.career-node:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover effects */
+.career-node-content:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.career-level-level5 .career-node-content:hover {
+  box-shadow: 0 12px 32px rgba(214, 158, 46, 0.5);
+}

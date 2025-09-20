@@ -1,0 +1,227 @@
+.career-sankey-container {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.career-sankey-tree {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sankey-node {
+  margin: 8px 0;
+  position: relative;
+}
+
+.sankey-node-content {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.sankey-expandable {
+  cursor: pointer;
+}
+
+.sankey-expandable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-left-color: #764ba2;
+}
+
+.sankey-node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sankey-node-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  flex: 1;
+}
+
+.sankey-expand-icon {
+  font-size: 0.9rem;
+  color: #667eea;
+  transition: transform 0.3s ease;
+  margin-left: 12px;
+}
+
+.sankey-expand-icon.expanded {
+  transform: rotate(0deg);
+}
+
+.sankey-node-value {
+  font-size: 0.9rem;
+  color: #4a5568;
+  background: #f7fafc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
+}
+
+.sankey-children {
+  margin-left: 24px;
+  margin-top: 12px;
+  position: relative;
+}
+
+.sankey-children::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  border-radius: 1px;
+}
+
+.sankey-level-0 .sankey-node-content {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-left: none;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.sankey-level-0 .sankey-node-title {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.sankey-level-0 .sankey-node-value {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sankey-level-1 .sankey-node-content {
+  border-left-color: #48bb78;
+  background: linear-gradient(135deg, #f0fff4, #e6fffa);
+}
+
+.sankey-level-1 .sankey-node-title {
+  color: #2f855a;
+}
+
+.sankey-level-2 .sankey-node-content {
+  border-left-color: #ed8936;
+  background: linear-gradient(135deg, #fffaf0, #fef5e7);
+}
+
+.sankey-level-2 .sankey-node-title {
+  color: #c05621;
+}
+
+.sankey-level-3 .sankey-node-content {
+  border-left-color: #9f7aea;
+  background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+}
+
+.sankey-level-3 .sankey-node-title {
+  color: #805ad5;
+}
+
+/* Animation for expanding/collapsing */
+.sankey-children {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .career-sankey-container {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .career-sankey-tree {
+    padding: 16px;
+  }
+  
+  .sankey-node-content {
+    padding: 12px;
+  }
+  
+  .sankey-node-title {
+    font-size: 1rem;
+  }
+  
+  .sankey-children {
+    margin-left: 16px;
+  }
+  
+  .sankey-level-0 .sankey-node-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Hover effects for better interactivity */
+.sankey-node-content:hover {
+  transform: translateX(4px);
+}
+
+.sankey-level-0 .sankey-node-content:hover {
+  transform: translateY(-2px);
+}
+
+/* Connection lines between levels */
+.sankey-level-1::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  background: #667eea;
+  transform: translateY(-50%);
+}
+
+.sankey-level-2::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  background: #48bb78;
+  transform: translateY(-50%);
+}
+
+.sankey-level-3::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  background: #ed8936;
+  transform: translateY(-50%);
+}
